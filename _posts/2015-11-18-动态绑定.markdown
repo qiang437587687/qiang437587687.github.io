@@ -1,14 +1,16 @@
 ---
 layout: post
-title:  欢迎各位
+title:  动态绑定
 date:   2015-11-08
 ---
 
+
+
 # 动态绑定
 
-标签:iOS 
+标签:`iOS`  `动态绑定`
 
-说道动态绑定大家肯定会想到runtime其实自己也有很多不懂的地方,isa等等还不是很明白这个以后肯定要去研究的这个先不说,昨天在群里面有人问我为什么要使用这个方法
+说道动态绑定大家肯定会想到runtime其实自己也有很多不懂的地方,isa等等还不是很明白这个以后肯定要去研究的这个先不说,昨天在群里面有人问我为什么要使用这个方法.
 
 ``` 
 objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy)
@@ -41,7 +43,7 @@ LogDataModel *modelTotal = objc_getAssociatedObject(button, &kUITableViewIndexKe
 
 这样就能直接取得对应的model进行下一步的动作了.所以并不需要去用tag,那种繁琐的方式了,这个只是一个简单的例子而已,其实用button的target action 方式甚至能实现一定的传值(button的target设置成对应的controller).这里面就不详细说了.
 
-----------
+---
 
 Ps:
 
@@ -52,4 +54,3 @@ Ps:
 作者: 韩大熊宝要姓张         [本人博客](http://handabao.com)
 
 ![](/images/开心.gif)
-
