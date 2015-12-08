@@ -19,20 +19,58 @@ date:   2015-12-07
 ``` 
 class MyCanvas: UIView {
     override func drawRect(rect: CGRect) {
-    
+
     }  
 }
 ```
 
-// 妈的  ``` 才能引用代码 害得我弄了半天都下班了,,今天晚上或者明天再接着写.
+穿件完成之后再来看看下面的代码和注释(下面这些就是drawRect里面写的一些内容)
 
+``` 
+    override func drawRect(rect: CGRect) {
+        let  bezierPath = UIBezierPath()
+        //创建一个rect 所有的边都内缩百分之5  后面的两个参数 正的是缩小 负的是增大
+        let drawingRect = CGRectInset(self.bounds, self.bounds.size.width * 0.05, self.bounds.size.height * 0.05)
 
+        //获取需要的各个点
+        let topLeft = CGPointMake(CGRectGetMinX(drawingRect), CGRectGetMinY(drawingRect))
 
+        let topRight = CGPointMake(CGRectGetMaxX(drawingRect),
+            CGRectGetMinY(drawingRect))
 
+        let bottomRight = CGPointMake(CGRectGetMaxX(drawingRect),
+            CGRectGetMaxY(drawingRect))
 
+        let bottomLeft = CGPointMake(CGRectGetMinX(drawingRect),
+            CGRectGetMaxY(drawingRect))
 
+        let center = CGPointMake(CGRectGetMidX(drawingRect),
+            CGRectGetMidY(drawingRect))
 
+        bezierPath.moveToPoint(topLeft) //这个是开始的地方
+        bezierPath.addLineToPoint(topRight)
+        bezierPath.addLineToPoint(bottomLeft)
 
+        //下面这两个函数有意思了,查询了一下addCurveToPoint是根据4个点来确定一个固定曲线(具体的			Bezier曲线问题看下面的网站) 	       
+		//  bezierPath.addCurveToPoint(bottomRight, controlPoint1: center, controlPoint2: 			center)
+		//addQuadCurveToPoint这个曲线是根据3个点来确定一个唯一的曲线
+        bezierPath.addQuadCurveToPoint(bottomRight, controlPoint: center) //
+        //使路径闭合，结束绘制(最后一个点会自动连接到初始点)
+        bezierPath.closePath() 
+
+        //设定颜色，并绘制它们
+        UIColor.greenColor().setFill()
+        UIColor.blackColor().setStroke()
+
+        bezierPath.fill()
+        bezierPath.stroke()
+
+    }
+```
+
+画出来的图形是这个样子的![](/images/Bezier.png)
+
+相关知识[Bezier的理解](http://www.mobibrw.com/?p=12)
 
 作者: 韩大熊宝要姓张         [本人博客](http://handabao.com)
 
