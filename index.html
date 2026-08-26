@@ -25,6 +25,13 @@
             padding: 0 20px;
         }
 
+        /* --- 修正锚点被导航栏遮挡 --- */
+        #features,
+        #download,
+        #privacy {
+            scroll-margin-top: 80px;   /* 补偿固定导航栏高度 */
+        }
+
         /* --- Navigation --- */
         nav {
             background: rgba(255, 255, 255, 0.85);
@@ -157,6 +164,7 @@
             padding: 30px 28px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
             transition: box-shadow 0.3s;
+            text-align: center;
         }
 
         .card:hover {
@@ -167,12 +175,14 @@
             margin-bottom: 12px;
             font-size: 19px;
             font-weight: 600;
+            text-align: center;
         }
 
         .card p {
             color: #6e6e73;
             font-size: 15px;
             line-height: 1.6;
+            text-align: left;
         }
 
         /* --- Download area --- */
@@ -204,18 +214,21 @@
         .privacy-inner h1 {
             font-size: 28px;
             margin-bottom: 12px;
+            text-align: center;
         }
 
         .privacy-inner h2 {
             font-size: 20px;
             margin: 30px 0 12px;
             font-weight: 600;
+            text-align: center;
         }
 
         .privacy-inner p {
             font-size: 16px;
             color: #424245;
             margin: 10px 0;
+            text-align: left;
         }
 
         .privacy-inner a {
@@ -231,6 +244,7 @@
             color: #86868b;
             font-size: 14px;
             margin-bottom: 20px;
+            text-align: center;
         }
 
         /* --- Footer --- */
@@ -369,7 +383,6 @@
                 <h3>🔊 Stable Playback</h3>
                 <p>Optimized playback logic effectively reduces stuttering and crashes, providing a long‑term reliable listening experience.</p>
             </div>
-            <!-- 新增功能卡片：快速搜索与创建列表 -->
             <div class="card">
                 <h3>🔍 Quick Search & Playlist Creation</h3>
                 <p>Instantly find any song, artist, or album with a powerful search, and create custom playlists in seconds to organise your music effortlessly.</p>
@@ -382,11 +395,12 @@
         <div class="download-section">
             <h2 class="section-title">Download Apple Music Box</h2>
             <p class="section-desc">Get the latest version now</p>
-            <a href="#" class="btn">Latest Version Download</a>
+            <!-- 使用 javascript:void(0) 避免任何跳转 -->
+            <a href="javascript:void(0)" class="btn">Latest Version Download</a>
         </div>
     </section>
 
-    <!-- ===== Privacy Policy (inline, clickable via nav & footer) ===== -->
+    <!-- ===== Privacy Policy (inline, clickable) ===== -->
     <section id="privacy" class="container">
         <div class="privacy-inner">
             <h1>Privacy Policy</h1>
